@@ -10,31 +10,31 @@ typedef struct {
 } WordInfo;
 
 // Function to merge two sorted arrays of WordInfo structs
-void merge(WordInfo arr[], int left, int mid, int right) {
+void merge(WordInfo array[], int left, int mid, int right) {
     int i, j, k;
     int n1 = mid - left + 1;
     int n2 = right - mid;
 
     // Create temporary arrays
-    WordInfo L[n1];
-    WordInfo R[n2];
+    WordInfo Left[n1];
+    WordInfo Right[n2];
 
     // Copy data to temporary arrays L[] and R[]
     for (i = 0; i < n1; i++)
-        L[i] = arr[left + i];
+        Left[i] = array[left + i];
     for (j = 0; j < n2; j++)
-        R[j] = arr[mid + 1 + j];
+        Right[j] = array[mid + 1 + j];
 
     // Merge the temporary arrays back into arr[left..right]
     i = 0;
     j = 0;
     k = left;
     while (i < n1 && j < n2) {
-        if (L[i].frequency < R[j].frequency || (L[i].frequency == R[j].frequency && strcmp(L[i].word, R[j].word) > 0)) {
-            arr[k] = L[i];
+        if (Left[i].frequency < Right[j].frequency || (Left[i].frequency == Right[j].frequency && strcmp(Left[i].word, Right[j].word) > 0)) {
+            array[k] = Left[i];
             i++;
         } else {
-            arr[k] = R[j];
+            array[k] = Right[j];
             j++;
         }
         k++;
@@ -42,26 +42,26 @@ void merge(WordInfo arr[], int left, int mid, int right) {
 
     // Copy the remaining elements of L[], if any
     while (i < n1) {
-        arr[k] = L[i];
+        array[k] = Left[i];
         i++;
         k++;
     }
 
     // Copy the remaining elements of R[], if any
     while (j < n2) {
-        arr[k] = R[j];
+        array[k] = Right[j];
         j++;
         k++;
     }
 }
 
 // Merge sort function for sorting an array of WordInfo structs
-void mergeSort(WordInfo arr[], int left, int right) {
+void mergeSort(WordInfo array[], int left, int right) {
     if (left < right) {
         int mid = left + (right - left) / 2;
-        mergeSort(arr, left, mid);
-        mergeSort(arr, mid + 1, right);
-        merge(arr, left, mid, right);
+        mergeSort(array, left, mid);
+        mergeSort(array, mid + 1, right);
+        merge(array, left, mid, right);
     }
 }
 
