@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-//2329
+
 // Function to create a new node
 Node* createNode(int data) {
     Node* newNode = (Node*)malloc(sizeof(Node));
@@ -25,7 +25,7 @@ void insert(Node** root, int data) {
     }
 }
 
-//2323
+
 void preorderTraversal(Node* root) {
     if (root == NULL) return;
     printf("%d ", root->data);
