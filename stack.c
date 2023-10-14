@@ -31,3 +31,7 @@ char pop(Stack *stack) {
         return item;
     }
 }
+char peek (Stack *stack)
+{
+  return stack->data[stack->top];
+}

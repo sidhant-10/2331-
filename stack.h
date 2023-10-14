@@ -14,5 +14,5 @@ void init(Stack *stack);
 int is_empty(Stack *stack);
 int is_full(Stack *stack);
 char pop(Stack *stack);
-
+char peek (Stack *stack);
 #endif /* STACK_H */
